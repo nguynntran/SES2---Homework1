@@ -62,17 +62,20 @@ public:
         }
         return *this;
     }
+    T& operator()(const size_t& i){
+        return arr[(start + i) % cap];
+    }
 
     void push_front(const T& value) {
         if (size == cap) {
             resize();
         }
-        for (int i = size; i > start; --i){
-            arr[i] = arr[i - 1];
-        }
+        start = (start - 1 + cap) % cap;
         arr[start] = value;
+        if (size == 0) {
+            end = start;
+        }
         ++size;
-        this->end = end + 1;
 
     }
 
@@ -91,7 +94,7 @@ public:
         if (size == 0) {
             throw std::out_of_range("Deque is empty");
         }
-        start = (start + 1);
+        start = (start + 1) % cap;
         --size;
     }
 
@@ -138,5 +141,5 @@ int main(){
     deq1.pop_back();
     deq1.print();
     deq3.print();
-    std:: cout << deq1.Size();
+    std:: cout << deq1.Size() << std:: endl <<  deq1(0);
 }
