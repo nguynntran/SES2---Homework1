@@ -67,7 +67,7 @@ public:
         if (size == cap) {
             resize();
         }
-        for (int i = size; i >= 1; --i){
+        for (int i = size; i > start; --i){
             arr[i] = arr[i - 1];
         }
         arr[start] = value;
@@ -76,8 +76,8 @@ public:
 
 
     
-        // Insert the value at the new front index
-        arr[start] = value;
+        // // Insert the value at the new front index
+        // arr[start] = value;
     }
 
     void push_back(const T& value) {
@@ -115,7 +115,7 @@ public:
         return cap;
     }
     void print(){
-        for (int i = start; i < this->size; i++){
+        for (int i = 0; i < this->size; i++){
             std:: cout <<this->arr[(start + i) % cap] << " ";
         }
         std::cout << std::endl;
@@ -138,6 +138,8 @@ int main(){
     deq1.push_back(30);
     deq1.pop_back();
     deq1.pop_front();
+    deq1.pop_front();
+    deq1.pop_back();
     deq1.print();
     deq3.print();
     std:: cout << deq1.Size();

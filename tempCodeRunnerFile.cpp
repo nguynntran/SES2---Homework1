@@ -1,1 +1,1 @@
-begin
+deq1.pop_front();
