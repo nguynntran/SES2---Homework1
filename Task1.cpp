@@ -74,10 +74,6 @@ public:
         ++size;
         this->end = end + 1;
 
-
-    
-        // // Insert the value at the new front index
-        // arr[start] = value;
     }
 
     void push_back(const T& value) {
